@@ -1,0 +1,14 @@
+{
+  "name": "link.tree.crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.49.1",
+    "playwright-chromium": "^1.49.1"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.49.1",
+    "yargs": "^17.7.2"
+  }
+}
