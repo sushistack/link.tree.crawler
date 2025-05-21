@@ -18,6 +18,11 @@ class CrawlService {
         const page = await browser.newPage();
         try {
             for (const keyword of notCrawledKeywords) {
+                const dirPath = this.articleDirPath(keyword);
+                if (!fs.existsSync(dirPath)) {
+                    fs.mkdirSync(dirPath, { recursive: true });
+                    console.log(`Created directory: ${dirPath}`);
+                }
                 for (let pageNumber = 1; pageNumber <= con.maxPage; pageNumber++) {
                     console.log(`Keyword: ${keyword}, Page: ${pageNumber}`);
                     const searchUrl = this.getSearchUrl(keyword, pageNumber);
@@ -86,7 +91,7 @@ class CrawlService {
 
     writeArticle(article, keyword) {
         const dirPath = this.articleDirPath(keyword);
-        if (!fs.existsSync(this.articleDirPath(keyword))) {
+        if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath, { recursive: true });
         }
 
